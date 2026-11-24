@@ -1,18 +1,15 @@
-#### About 
-Folder ini berisi kumpulan asset yg ku bagi jadi 3 category, sejauh ini ada wallpaper, random (belum ku isi) dan screencast/clip (belum ku isi juga) aja
+### About
+Folder ini berisi kumpulan visual asset yang kubagi ke beberapa kategori, sejauh ini ada `wallpapers` dan `random` (masih kosong, belum tahu mau diisi apa).
 
-> **Note:** Semua wallpaper di folder ini diambil dari berbagai sumber publik untuk koleksi pribadi.
+> **Note:** Semua asset di folder ini diambil dari berbagai sumber publik dan di-upscale ulang untuk koleksi pribadi.
 
 ----
 
-### 🎨 Wallpapers Collection
+### 🎨 Wallpapers
+- Resolusi minimal di-set ke `1920x1200` ke atas (khusus desktop).
+- Format wajib `.png` dengan penamaan berurutan (`walls-1.png`, dst).
 
-- Mostly resolusi wallpaper nya ku set ke 1920x1200 ke atas semua (for desktop)
-
-### 🔗 Site u may not know
-- for links, just check the `LINKS.md`
-
-### 📸 Clips
+### 📦 Random
 - None
 
 `will update if i willing to`

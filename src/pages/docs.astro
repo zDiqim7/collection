@@ -1,0 +1,129 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const rawDocs = import.meta.glob('../../docs/**/*.md', {
+  query: '?raw',
+  import: 'default',
+  eager: true,
+});
+
+const docs = Object.entries(rawDocs)
+  .filter(([path]) => !path.endsWith('README.md'))
+  .map(([path, content], index) => {
+    const relative = path.replace(/^.*\/docs\//, '');
+    const parts = relative.split('/');
+    const folder = parts.length > 1 ? parts[0] : 'general';
+    const name = parts[parts.length - 1];
+    return {
+      id: `doc-${index}`,
+      folder,
+      name,
+      relative,
+      raw: content as string,
+    };
+  })
+  .sort((a, b) => a.relative.localeCompare(b.relative));
+---
+
+<BaseLayout title="/docs — Dev Playbook & Rules">
+  <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
+    <div>
+      <div class="font-mono text-xs text-purple-600 dark:text-purple-400 mb-1">03 / PLAYBOOK</div>
+      <h1 class="text-2xl sm:text-3xl font-semibold tracking-tight">Dev Docs & Rules</h1>
+      <p class="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 mt-1">
+        Pilih file di daftar kiri untuk baca atau salin mentahannya ke clipboard.
+      </p>
+    </div>
+    <div class="font-mono text-xs px-3 py-1.5 rounded-full border border-zinc-200 dark:border-zinc-800 bg-white/70 dark:bg-zinc-900/70 self-start">
+      total: <span class="text-amber-600 dark:text-yellow-400 font-semibold">{docs.length}</span> docs
+    </div>
+  </div>
+
+  {docs.length === 0 ? (
+    <div class="rounded-2xl border border-zinc-200 dark:border-zinc-800 p-8 text-center font-mono text-xs text-zinc-500">
+      Belum ada file dokumentasi di dalam folder docs/.
+    </div>
+  ) : (
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
+      <!-- File List Sidebar -->
+      <aside class="md:col-span-4 rounded-2xl border border-zinc-200 dark:border-zinc-800/90 bg-white/80 dark:bg-zinc-900/50 p-3 space-y-1 max-h-[65vh] overflow-y-auto">
+        {docs.map((doc, idx) => (
+          <button
+            type="button"
+            data-target={doc.id}
+            class:list={[
+              'doc-tab w-full text-left px-3 py-2.5 rounded-xl font-mono text-xs transition-colors flex flex-col gap-0.5',
+              idx === 0
+                ? 'bg-zinc-900 text-yellow-300 dark:bg-zinc-800 dark:text-yellow-300 font-semibold'
+                : 'text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800/50',
+            ]}
+          >
+            <span class="text-[10px] opacity-60">{doc.folder}/</span>
+            <span class="truncate">{doc.name}</span>
+          </button>
+        ))}
+      </aside>
+
+      <!-- Document Viewer -->
+      <div class="md:col-span-8">
+        {docs.map((doc, idx) => (
+          <section
+            id={doc.id}
+            class:list={[
+              'doc-panel rounded-2xl border border-zinc-200 dark:border-zinc-800/90 bg-white/90 dark:bg-zinc-900/60 overflow-hidden',
+              idx !== 0 && 'hidden',
+            ]}
+          >
+            <div class="px-4 sm:px-5 py-3 border-b border-zinc-200 dark:border-zinc-800 flex items-center justify-between gap-2 bg-zinc-50/80 dark:bg-zinc-950/60">
+              <span class="font-mono text-xs text-zinc-600 dark:text-zinc-300 truncate">
+                docs/{doc.relative}
+              </span>
+              <button
+                type="button"
+                data-raw={doc.raw}
+                class="copy-btn shrink-0 px-3 py-1 rounded-full font-mono text-xs bg-zinc-900 text-yellow-300 dark:bg-yellow-400 dark:text-zinc-950 font-semibold hover:opacity-90 transition-opacity"
+              >
+                Copy Raw
+              </button>
+            </div>
+            <pre class="p-4 sm:p-6 text-xs sm:text-[13px] leading-relaxed font-mono text-zinc-800 dark:text-zinc-200 overflow-x-auto whitespace-pre-wrap break-words max-h-[70vh] overflow-y-auto">{doc.raw}</pre>
+          </section>
+        ))}
+      </div>
+    </div>
+  )}
+
+  <script is:inline>
+    const tabs = document.querySelectorAll('.doc-tab');
+    const panels = document.querySelectorAll('.doc-panel');
+
+    tabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        const targetId = tab.getAttribute('data-target');
+        tabs.forEach((t) => {
+          t.classList.remove('bg-zinc-900', 'text-yellow-300', 'dark:bg-zinc-800', 'dark:text-yellow-300', 'font-semibold');
+          t.classList.add('text-zinc-600', 'dark:text-zinc-400');
+        });
+        tab.classList.add('bg-zinc-900', 'text-yellow-300', 'dark:bg-zinc-800', 'dark:text-yellow-300', 'font-semibold');
+        tab.classList.remove('text-zinc-600', 'dark:text-zinc-400');
+
+        panels.forEach((p) => {
+          if (p.id === targetId) p.classList.remove('hidden');
+          else p.classList.add('hidden');
+        });
+      });
+    });
+
+    document.querySelectorAll('.copy-btn').forEach((btn) => {
+      btn.addEventListener('click', async () => {
+        const raw = btn.getAttribute('data-raw') || '';
+        await navigator.clipboard.writeText(raw);
+        const original = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(() => {
+          btn.textContent = original;
+        }, 1500);
+      });
+    });
+  </script>
+</BaseLayout>

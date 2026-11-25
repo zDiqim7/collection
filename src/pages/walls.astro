@@ -1,0 +1,149 @@
+---
+import type { ImageMetadata } from 'astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const wallModules = import.meta.glob<{ default: ImageMetadata }>(
+  '../../assets/wallpapers/*.png',
+  { eager: true }
+);
+
+const wallpapers = Object.entries(wallModules)
+  .map(([path, mod]) => {
+    const filename = path.split('/').pop() || 'wallpaper.png';
+    return {
+      name: filename,
+      src: mod.default.src,
+      width: mod.default.width,
+      height: mod.default.height,
+    };
+  })
+  .sort((a, b) => a.name.localeCompare(b.name, undefined, { numeric: true }));
+---
+
+<BaseLayout title="/walls — Wallpapers Gallery">
+  <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
+    <div>
+      <div class="font-mono text-xs text-purple-600 dark:text-purple-400 mb-1">01 / VISUALS</div>
+      <h1 class="text-2xl sm:text-3xl font-semibold tracking-tight">Wallpapers Gallery</h1>
+      <p class="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 mt-1">
+        Klik gambar untuk preview penuh, atau langsung unduh file PNG resolusi asli.
+      </p>
+    </div>
+    <div class="font-mono text-xs px-3 py-1.5 rounded-full border border-zinc-200 dark:border-zinc-800 bg-white/70 dark:bg-zinc-900/70 self-start">
+      total: <span class="text-amber-600 dark:text-yellow-400 font-semibold">{wallpapers.length}</span> png
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+    {wallpapers.map((wall) => (
+      <article class="choose-card group rounded-2xl border border-zinc-200 dark:border-zinc-800/90 bg-white/80 dark:bg-zinc-900/50 overflow-hidden flex flex-col">
+        <span class="choose-corner choose-tl"></span>
+        <span class="choose-corner choose-tr"></span>
+        <span class="choose-corner choose-bl"></span>
+        <span class="choose-corner choose-br"></span>
+
+        <button
+          type="button"
+          class="preview-trigger relative aspect-video w-full overflow-hidden bg-zinc-950 text-left"
+          data-src={wall.src}
+          data-name={wall.name}
+          data-res={`${wall.width}x${wall.height}`}
+        >
+          <img
+            src={wall.src}
+            alt={wall.name}
+            loading="lazy"
+            decoding="async"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+          />
+          <span class="absolute bottom-2 right-2 px-2 py-0.5 rounded bg-zinc-950/80 backdrop-blur-xs font-mono text-[10px] text-yellow-300 border border-white/10">
+            {wall.width}x{wall.height}
+          </span>
+        </button>
+
+        <div class="p-3.5 flex items-center justify-between gap-2 font-mono text-xs">
+          <span class="truncate text-zinc-700 dark:text-zinc-300" title={wall.name}>
+            {wall.name}
+          </span>
+          <a
+            href={wall.src}
+            download={wall.name}
+            class="shrink-0 px-2.5 py-1 rounded-lg bg-zinc-900 text-yellow-300 dark:bg-zinc-800 dark:hover:bg-yellow-400 dark:hover:text-zinc-950 transition-colors font-semibold"
+          >
+            ↓ PNG
+          </a>
+        </div>
+      </article>
+    ))}
+  </div>
+
+  <!-- Lightbox Modal -->
+  <div
+    id="wall-modal"
+    class="hidden fixed inset-0 z-50 bg-zinc-950/90 backdrop-blur-md p-4 sm:p-8 flex-col items-center justify-center gap-4"
+  >
+    <div class="w-full max-w-5xl flex items-center justify-between font-mono text-xs text-zinc-300">
+      <div>
+        <span id="modal-name" class="font-semibold text-white"></span>
+        <span id="modal-res" class="ml-2 text-yellow-400"></span>
+      </div>
+      <div class="flex items-center gap-2">
+        <a
+          id="modal-download"
+          href="#"
+          download
+          class="px-3 py-1.5 rounded-full bg-yellow-400 text-zinc-950 font-semibold hover:opacity-90"
+        >
+          Download Original
+        </a>
+        <button
+          id="modal-close"
+          type="button"
+          class="px-3 py-1.5 rounded-full border border-zinc-700 hover:border-white text-zinc-200"
+        >
+          ESC / Close
+        </button>
+      </div>
+    </div>
+    <img id="modal-img" src="" alt="" class="max-h-[80vh] max-w-full rounded-xl border border-zinc-800 object-contain" />
+  </div>
+
+  <script is:inline>
+    const modal = document.getElementById('wall-modal');
+    const modalImg = document.getElementById('modal-img');
+    const modalName = document.getElementById('modal-name');
+    const modalRes = document.getElementById('modal-res');
+    const modalDownload = document.getElementById('modal-download');
+    const closeBtn = document.getElementById('modal-close');
+
+    document.querySelectorAll('.preview-trigger').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const src = btn.getAttribute('data-src');
+        const name = btn.getAttribute('data-name');
+        const res = btn.getAttribute('data-res');
+        if (!modal || !modalImg) return;
+
+        modalImg.src = src;
+        modalName.textContent = name;
+        modalRes.textContent = `[${res}]`;
+        modalDownload.href = src;
+        modalDownload.setAttribute('download', name);
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+      });
+    });
+
+    function closeModal() {
+      modal?.classList.add('hidden');
+      modal?.classList.remove('flex');
+    }
+
+    closeBtn?.addEventListener('click', closeModal);
+    modal?.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeModal();
+    });
+  </script>
+</BaseLayout>

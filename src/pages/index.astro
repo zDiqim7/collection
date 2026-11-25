@@ -1,0 +1,176 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { parseLinks } from '../lib/links';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+const wallpaperFiles = import.meta.glob('../../assets/wallpapers/*.png');
+const docFiles = import.meta.glob('../../docs/**/*.md');
+const linksRaw = import.meta.glob('../../links/links.md', {
+  query: '?raw',
+  import: 'default',
+  eager: true,
+});
+
+const wallCount = Object.keys(wallpaperFiles).length;
+const docCount = Object.keys(docFiles).filter((path) => !path.endsWith('README.md')).length;
+const linksContent = (Object.values(linksRaw)[0] as string) || '';
+const linkCount = parseLinks(linksContent).length;
+---
+
+<BaseLayout title="~/collection — Personal Dev & Asset Hub">
+  <div class="grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-5">
+    <!-- Hero Card -->
+    <section class="choose-card md:col-span-8 rounded-2xl border border-zinc-200 dark:border-zinc-800/90 bg-white/80 dark:bg-zinc-900/50 backdrop-blur-xs p-6 sm:p-7 flex flex-col justify-between transition-colors">
+      <span class="choose-corner choose-tl"></span>
+      <span class="choose-corner choose-tr"></span>
+      <span class="choose-corner choose-bl"></span>
+      <span class="choose-corner choose-br"></span>
+
+      <div>
+        <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-full border border-purple-200 dark:border-purple-500/30 bg-purple-50 dark:bg-purple-500/10 font-mono text-[11px] text-purple-700 dark:text-purple-300 mb-4">
+          <span>ARCHIVED HUB</span>
+          <span class="opacity-40">/</span>
+          <span class="text-amber-600 dark:text-yellow-400 font-semibold">PUBLIC READ-ONLY</span>
+        </div>
+
+        <h1 class="text-2xl sm:text-4xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">
+          Personal Digital <span class="underline decoration-yellow-400 decoration-2 underline-offset-4">Backpack.</span>
+        </h1>
+        <p class="mt-3 text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-xl">
+          Tempat nyimpen wallpaper desktop resolusi tinggi, kumpulan tools & referensi web, serta template dokumentasi teknis siap pakai tanpa perlu login akun di komputer publik.
+        </p>
+      </div>
+
+      <div class="mt-7 pt-4 border-t border-zinc-200/80 dark:border-zinc-800/80 flex flex-wrap items-center justify-between gap-3 font-mono text-xs text-zinc-500">
+        <span>host: zdiqim7.github.io/collection</span>
+        <a
+          href="https://github.com/zDiqim7/collection"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-zinc-900 text-yellow-300 dark:bg-yellow-400 dark:text-zinc-950 font-semibold hover:opacity-90 transition-opacity"
+        >
+          source repo -&gt;
+        </a>
+      </div>
+    </section>
+
+    <!-- System Spec Card -->
+    <section class="choose-card md:col-span-4 rounded-2xl border border-zinc-200 dark:border-zinc-800/90 bg-white/80 dark:bg-zinc-900/50 backdrop-blur-xs p-6 flex flex-col justify-between font-mono text-xs transition-colors">
+      <span class="choose-corner choose-tl"></span>
+      <span class="choose-corner choose-tr"></span>
+      <span class="choose-corner choose-bl"></span>
+      <span class="choose-corner choose-br"></span>
+
+      <div class="space-y-3">
+        <div class="text-purple-600 dark:text-purple-400 uppercase tracking-wider text-[11px] font-semibold">
+          // System Rules
+        </div>
+        <div class="flex justify-between py-1.5 border-b border-zinc-200/70 dark:border-zinc-800/70">
+          <span class="text-zinc-500">wall.format</span>
+          <span class="text-zinc-800 dark:text-zinc-200">.png only</span>
+        </div>
+        <div class="flex justify-between py-1.5 border-b border-zinc-200/70 dark:border-zinc-800/70">
+          <span class="text-zinc-500">wall.min_res</span>
+          <span class="text-zinc-800 dark:text-zinc-200">&gt;= 1920x1200</span>
+        </div>
+        <div class="flex justify-between py-1.5 border-b border-zinc-200/70 dark:border-zinc-800/70">
+          <span class="text-zinc-500">engine</span>
+          <span class="text-zinc-800 dark:text-zinc-200">Astro Static</span>
+        </div>
+        <div class="flex justify-between py-1.5">
+          <span class="text-zinc-500">database</span>
+          <span class="text-amber-600 dark:text-yellow-400 font-medium">none (fs-based)</span>
+        </div>
+      </div>
+
+      <p class="mt-4 text-[11px] text-zinc-400 dark:text-zinc-500">
+        will update if i willing to
+      </p>
+    </section>
+
+    <!-- Route Card: Wallpapers -->
+    <a
+      href={`${base}/walls`}
+      class="choose-card group md:col-span-4 rounded-2xl border border-zinc-200 dark:border-zinc-800/90 bg-white/70 dark:bg-zinc-900/40 hover:bg-white dark:hover:bg-zinc-900/80 transition-all p-6 flex flex-col justify-between"
+    >
+      <span class="choose-corner choose-tl"></span>
+      <span class="choose-corner choose-tr"></span>
+      <span class="choose-corner choose-bl"></span>
+      <span class="choose-corner choose-br"></span>
+
+      <div class="flex items-start justify-between">
+        <span class="font-mono text-xs text-zinc-400 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
+          01 / VISUALS
+        </span>
+        <span class="font-mono text-xs px-2.5 py-0.5 rounded-full bg-yellow-400/20 text-amber-700 dark:text-yellow-300 border border-yellow-400/30">
+          {wallCount} files
+        </span>
+      </div>
+      <div class="mt-8">
+        <h2 class="text-lg font-semibold text-zinc-900 dark:text-zinc-100 group-hover:translate-x-1 transition-transform">
+          Wallpapers Gallery
+        </h2>
+        <p class="mt-1.5 text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
+          Koleksi desktop wallpaper hasil kurasi & upscale siap 1-click download.
+        </p>
+      </div>
+    </a>
+
+    <!-- Route Card: Links -->
+    <a
+      href={`${base}/links`}
+      class="choose-card group md:col-span-4 rounded-2xl border border-zinc-200 dark:border-zinc-800/90 bg-white/70 dark:bg-zinc-900/40 hover:bg-white dark:hover:bg-zinc-900/80 transition-all p-6 flex flex-col justify-between"
+    >
+      <span class="choose-corner choose-tl"></span>
+      <span class="choose-corner choose-tr"></span>
+      <span class="choose-corner choose-bl"></span>
+      <span class="choose-corner choose-br"></span>
+
+      <div class="flex items-start justify-between">
+        <span class="font-mono text-xs text-zinc-400 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
+          02 / BOOKMARKS
+        </span>
+        <span class="font-mono text-xs px-2.5 py-0.5 rounded-full bg-purple-500/15 text-purple-700 dark:text-purple-300 border border-purple-500/30">
+          {linkCount} links
+        </span>
+      </div>
+      <div class="mt-8">
+        <h2 class="text-lg font-semibold text-zinc-900 dark:text-zinc-100 group-hover:translate-x-1 transition-transform">
+          Curated Links
+        </h2>
+        <p class="mt-1.5 text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
+          AI tools, referensi UI/UX, free alternatives, dan resource belajar.
+        </p>
+      </div>
+    </a>
+
+    <!-- Route Card: Docs -->
+    <a
+      href={`${base}/docs`}
+      class="choose-card group md:col-span-4 rounded-2xl border border-zinc-200 dark:border-zinc-800/90 bg-white/70 dark:bg-zinc-900/40 hover:bg-white dark:hover:bg-zinc-900/80 transition-all p-6 flex flex-col justify-between"
+    >
+      <span class="choose-corner choose-tl"></span>
+      <span class="choose-corner choose-tr"></span>
+      <span class="choose-corner choose-bl"></span>
+      <span class="choose-corner choose-br"></span>
+
+      <div class="flex items-start justify-between">
+        <span class="font-mono text-xs text-zinc-400 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
+          03 / PLAYBOOK
+        </span>
+        <span class="font-mono text-xs px-2.5 py-0.5 rounded-full bg-yellow-400/20 text-amber-700 dark:text-yellow-300 border border-yellow-400/30">
+          {docCount} docs
+        </span>
+      </div>
+      <div class="mt-8">
+        <h2 class="text-lg font-semibold text-zinc-900 dark:text-zinc-100 group-hover:translate-x-1 transition-transform">
+          Dev Docs & Rules
+        </h2>
+        <p class="mt-1.5 text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
+          AGENTS.md, boilerplates, schema template, dan catatan workflow.
+        </p>
+      </div>
+    </a>
+  </div>
+</BaseLayout>

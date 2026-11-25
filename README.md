@@ -24,7 +24,6 @@ Saya gk bermaksud untuk mengclaim karya seseorang ya kalo ternyata ada hal yg gw
 - links/
   - LINKS.md
   - README.md
-- OBROLAN.md
 - README.md
 - .gitignore
 

@@ -34,3 +34,12 @@ Saya gk bermaksud untuk mengclaim karya seseorang ya kalo ternyata ada hal yg gw
 - font sans serif (inter or geist), JetBrains Mono
 
 `that's it for now`
+
+---
+
+<div align="center">
+
+![Kuru kuru](/assets/random/kurukuru.gif)
+
+`KuruKuru`
+</div>

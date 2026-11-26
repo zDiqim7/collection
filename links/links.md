@@ -42,6 +42,7 @@ Kumpulan curated links, tools, referensi desain, AI resources, dan repositori pi
 ## 3. Developer Tools, Stacks & Backend
 
 - [GitHub](https://github.com) — Hosting repository Git & kolaborasi kode
+- [indo.domains](https://indo.domains) - Reseller domain murah
 - [Forgejo](https://forgejo.org) — Alternatif self-hosted Git forge yang ringan & open-source
 - [Cloudflare](https://www.cloudflare.com) — CDN, DNS, security, Pages, dan Workers (essential)
 - [Vercel](https://vercel.com) — Platform deployment cepat untuk frontend & fullstack web
@@ -255,6 +256,7 @@ Kumpulan curated links, tools, referensi desain, AI resources, dan repositori pi
 - [Worse](https://github.com/rraahh133/Worse) — Project repo oleh rraahh133
 - [Ambatukam-Go](https://github.com/farhanturu/ambatukam-go) — Repo Go eksperimental/meme
 - [Alexandre Sanlim](https://alexandresanlim.github.io) — Portofolio / showcase developer
+- [Bilawal Sidhu](https://godseyeview.ai) - Spy Satelite Simulator
 
 ---
 

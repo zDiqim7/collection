@@ -43,6 +43,7 @@ Kumpulan curated links, tools, referensi desain, AI resources, dan repositori pi
 
 - [GitHub](https://github.com) — Hosting repository Git & kolaborasi kode
 - [indo.domains](https://indo.domains) - Reseller domain murah
+- [Pulau Domains](https://pulaudomain.com) - Satu pulau, ribuan nama untuk brand mu
 - [Forgejo](https://forgejo.org) — Alternatif self-hosted Git forge yang ringan & open-source
 - [Cloudflare](https://www.cloudflare.com) — CDN, DNS, security, Pages, dan Workers (essential)
 - [Vercel](https://vercel.com) — Platform deployment cepat untuk frontend & fullstack web
@@ -103,6 +104,7 @@ Kumpulan curated links, tools, referensi desain, AI resources, dan repositori pi
 - [Xiaomi MiMo Platform](https://platform.xiaomimimo.com) — Platform model AI dari Xiaomi
 - [0xriki.ai](https://0xriki.ai) — AI tools & eksperimen
 - [Companion Lab](https://github.com/companion-lab) — Eksperimen AI companion open-source
+- [OWASP](https://owasp-finbot-ctf.org) - An intentionally vulnerable agentic AI platform for learning, testing, and practicing Agentic AI security.
 
 ## 5. AI Image, Video, Audio & Productivity
 
@@ -159,6 +161,7 @@ Kumpulan curated links, tools, referensi desain, AI resources, dan repositori pi
 - [TCM Security Academy](https://academy.tcm-sec.com) — Kursus ethical hacking dan penetration testing
 - [Ghidra](https://ghidra-sre.org) — Framework reverse engineering open-source buatan NSA
 - [Reverse Engineering Guide](https://github.com/mytechnotalent/Reverse-Engineering) — Repositori pembelajaran reverse engineering dari dasar
+- [REA](https://github.com/morluto/rea) - One MCP for reverse engineering across binaries, applications, and runtime behavior.
 - [dCode.fr](https://www.dcode.fr) — Kumpulan solver kriptografi, cipher, dan encoding (sangat berguna buat CTF)
 - [CERT-EU](https://cert.europa.eu) — Advisory dan informasi keamanan siber Eropa
 - [ChromeKatz](https://github.com/Meckazin/ChromeKatz) — Tool riset keamanan untuk dumping kredensial/cookie browser berbasis Chromium
@@ -174,6 +177,7 @@ Kumpulan curated links, tools, referensi desain, AI resources, dan repositori pi
 
 ## 7. Free Software Alternatives (Stop Paying For Everything)
 
+- [ArtCraft](https://getartcraft.com/apps) - ArtCraft builds open source tools, free to use
 - [Tubi TV](https://tubitv.com) — Streaming film & TV gratis legal (alternatif Netflix / Disney+)
 - [Pluto TV](https://pluto.tv) — Live TV dan film gratis (alternatif Hulu)
 - [Movie-Box](https://movie-box.co) — Streaming film gratis

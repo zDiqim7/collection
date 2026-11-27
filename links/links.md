@@ -267,8 +267,8 @@ Kumpulan curated links, tools, referensi desain, AI resources, dan repositori pi
 `Will keep update if i willing` 🥱
 ```
 
-File `links/LINKS.md` sudah dirapikan, duplikat (seperti `Mobbin`, `Wispr Flow`, `Lunchclub`, `VivaReel`, `DeepBrain AI`, `Adobe Podcast`) sudah digabung, typo domain (`shacdn`, `netifly`, `codepan`, `preplexity`, `grock`) sudah diperbaiki, dan peringatan keamanan (`new.corelabs.sh` & LockBit sample) tetap dipertahankan.
+<!-- File `links/LINKS.md` sudah dirapikan, duplikat (seperti `Mobbin`, `Wispr Flow`, `Lunchclub`, `VivaReel`, `DeepBrain AI`, `Adobe Podcast`) sudah digabung, typo domain (`shacdn`, `netifly`, `codepan`, `preplexity`, `grock`) sudah diperbaiki, dan peringatan keamanan (`new.corelabs.sh` & LockBit sample) tetap dipertahankan.
 
 Soal pertanyaan folder `_temp` tadi: **kamu nggak perlu bikin folder `temp` secara manual dulu**. Jalankan saja perintah `npm create astro@latest _temp ...` langsung di dalam root `collection/`, nanti CLI Astro yang akan otomatis membuatkan folder `_temp`-nya, lalu lanjutkan perintah `cp -rn _temp/* .` dan `rm -rf _temp` untuk memindahkan isinya ke root.
 
-Kabari aja kalau `npm run dev` sudah jalan di CachyOS, biar kita lanjut bikin halaman `index.astro` dan parser otomatis untuk `LINKS.md` ini.
+Kabari aja kalau `npm run dev` sudah jalan di CachyOS, biar kita lanjut bikin halaman `index.astro` dan parser otomatis untuk `LINKS.md` ini. -->

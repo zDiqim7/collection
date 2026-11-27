@@ -24,7 +24,7 @@ vite.config.ts.timestamp-*
 
 # MD
 TUMPUKIN.md
-/backup
+tumpuk-sini-aja
 
 # build output
 dist/

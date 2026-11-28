@@ -38,6 +38,9 @@ Kumpulan curated links, tools, referensi desain, AI resources, dan repositori pi
 - [Webflow](https://webflow.com) — Visual web development platform
 - [Tilda](https://tilda.cc) — Website builder modular berbasis blok
 - [Pacdora](https://www.pacdora.com) — Generator mockup packaging 3D online
+- [Dribbble](https://dribbble.com/) — Komunitas dan galeri showcase inspirasi desain UI/UX, ilustrasi, dan portofolio desainer
+- [ThemeForest](https://themeforest.net) — Marketplace template website, tema WordPress, dan aset UI frontend
+- [Figma](https://www.figma.com) — Tool desain UI/UX kolaboratif dan prototyping berbasis web
 
 ## 3. Developer Tools, Stacks & Backend
 
@@ -105,6 +108,8 @@ Kumpulan curated links, tools, referensi desain, AI resources, dan repositori pi
 - [0xriki.ai](https://0xriki.ai) — AI tools & eksperimen
 - [Companion Lab](https://github.com/companion-lab) — Eksperimen AI companion open-source
 - [OWASP](https://owasp-finbot-ctf.org) - An intentionally vulnerable agentic AI platform for learning, testing, and practicing Agentic AI security.
+- [Antislop](https://antislop.ai.id/install?tab=single) — Ruleset dan MCP/CLI untuk menyaring output AI generik ("slop") pada UI, copy, dan kode
+- [Dahl Inference](https://inference.dahl.global/status) — Platform & status AI inference API untuk model LLM open-weight berbasis jaringan GPU terdesentralisasi
 
 ## 5. AI Image, Video, Audio & Productivity
 
@@ -189,6 +194,7 @@ Kumpulan curated links, tools, referensi desain, AI resources, dan repositori pi
 - [LibreOffice](https://www.libreoffice.org) — Suite office gratis & open-source (alternatif Microsoft 365)
 - [Obsidian](https://obsidian.md) — Aplikasi catatan berbasis Markdown lokal (alternatif Notion)
 - [Proton Mail](https://proton.me/mail) — Layanan email terenkripsi & fokus privasi (alternatif Gmail)
+- [Mail.tm](https://mail.tm/en/) — Layanan email sementara (disposable/temp mail) gratis dengan API
 - [Ginger Software](https://www.gingersoftware.com) — Pemeriksa grammar dan penulisan gratis (alternatif Grammarly)
 - [Epic Games Free Games](https://store.epicgames.com/en-US/free-games) — Klaim game PC gratis setiap minggu (alternatif Game Pass)
 - [Wattpad](https://www.wattpad.com) — Platform baca dan tulis cerita gratis (alternatif Kindle)
@@ -261,6 +267,7 @@ Kumpulan curated links, tools, referensi desain, AI resources, dan repositori pi
 - [Ambatukam-Go](https://github.com/farhanturu/ambatukam-go) — Repo Go eksperimental/meme
 - [Alexandre Sanlim](https://alexandresanlim.github.io) — Portofolio / showcase developer
 - [Bilawal Sidhu](https://godseyeview.ai) - Spy Satelite Simulator
+- [StarHub](https://www.starhub.com/personal.html) — Portal layanan telekomunikasi, internet, dan hiburan personal di Singapura
 
 ---
 

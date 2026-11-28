@@ -1,7 +1,7 @@
 ### About
 Folder ini berisi kumpulan visual asset yang kubagi ke beberapa kategori, sejauh ini ada `wallpapers` dan `random` (masih kosong, belum tahu mau diisi apa).
 
-> **Note:** Semua asset di folder ini diambil dari berbagai sumber publik dan di-upscale ulang untuk koleksi pribadi.
+> **Note:** These wallpapers are sourced from many, many, many sources on the internet. I did not make any of these, although I have edited several of them a little bit. Zero credit belongs to me in that regard, I'm simply the collector. If you are the artist of one of these wallpapers, please contact me, I will happily take the wallpaper down or add credit in this README.
 
 ----
 
